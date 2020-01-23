@@ -17,13 +17,23 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 12px; }
+    @media only screen and (max-width: 710px) {
+      body .display {
+        background-image: url("img/finance.medium.png"); } }
+    @media only screen and (max-width: 580px) {
+      body .display {
+        background-image: url("img/finance.small.png");
+        background-position: bottom; } }
     body .display .budget {
-      width: 350px;
+      min-width: 350px;
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center; }
+      @media only screen and (max-width: 580px) {
+        body .display .budget {
+          min-width: 200px; } }
       body .display .budget__title {
         font-size: 18px;
         text-align: center;
@@ -31,34 +41,66 @@ body {
         font-weight: 600;
         padding: 8px;
         margin-bottom: 10px;
-        background-color: #1a9283;
+        background-image: linear-gradient(to right bottom, white, rgba(106, 202, 211, 0.6));
         border-radius: 5px;
-        color: #daba30; }
+        color: #0B0C10;
+        border: 1px solid #0B0C10; }
+        @media only screen and (max-width: 580px) {
+          body .display .budget__title {
+            font-size: 13px; } }
       body .display .budget__value {
         font-weight: 300;
-        font-size: 35px;
+        font-size: 20px;
         text-align: center;
         margin-bottom: 6rem;
         letter-spacing: 2px;
         padding: 5px;
         min-width: 15rem;
         margin-bottom: 10px;
-        background-color: #1a9283;
+        background-image: linear-gradient(to right bottom, white, rgba(106, 202, 211, 0.8));
         border-radius: 5px;
-        color: #daba30; }
+        color: #0B0C10;
+        border: 1px solid #0B0C10;
+        max-width: 80vw;
+        overflow: auto; }
+        @media only screen and (max-width: 580px) {
+          body .display .budget__value {
+            font-size: 13px;
+            min-width: 200px; } }
       body .display .budget__income {
         padding: 5px;
         margin-bottom: 10px;
-        background-color: #1a9283;
+        background-image: linear-gradient(to right bottom, white, rgba(106, 202, 211, 0.8));
         text-align: center;
         min-width: 13rem;
-        border-radius: 5px; }
+        border-radius: 5px;
+        border: 1px solid #0B0C10;
+        max-width: 80vw;
+        overflow: auto;
+        color: #0B0C10; }
+        body .display .budget__income--text {
+          font-weight: 600; }
+        @media only screen and (max-width: 580px) {
+          body .display .budget__income {
+            font-size: 13px;
+            min-width: 200px;
+            margin-bottom: 10px; } }
       body .display .budget__expenses {
-        background-color: #424791;
+        background-image: linear-gradient(to right bottom, white, rgba(106, 202, 211, 0.8));
         padding: 5px;
         text-align: center;
         border-radius: 5px;
-        min-width: 13rem; }
+        min-width: 13rem;
+        border: 1px solid #0B0C10;
+        max-width: 80vw;
+        overflow: auto;
+        color: #0B0C10; }
+        body .display .budget__expenses--text {
+          font-weight: 600; }
+        @media only screen and (max-width: 580px) {
+          body .display .budget__expenses {
+            font-size: 13px;
+            min-width: 200px; } }
   body .fields {
     display: flex;
     flex-direction: column;
@@ -74,9 +116,9 @@ body {
       flex-direction: row;
       justify-content: space-around;
       width: 50rem; }
-      @media only screen and (max-width: 825px) {
+      @media only screen and (max-width: 950px) {
         body .fields .add {
-          width: 35rem;
+          width: 85vw;
           flex-direction: column;
           justify-content: center; } }
       body .fields .add__type {
@@ -87,7 +129,7 @@ body {
         margin-right: 10px;
         font-weight: 300;
         transition: border 0.3s; }
-        @media only screen and (max-width: 825px) {
+        @media only screen and (max-width: 950px) {
           body .fields .add__type {
             margin-right: none; } }
       body .fields .add__description, body .fields .add__value {
@@ -100,7 +142,7 @@ body {
         margin-right: 10px;
         border-radius: 5px;
         transition: border 0.3s; }
-        @media only screen and (max-width: 825px) {
+        @media only screen and (max-width: 950px) {
           body .fields .add__description, body .fields .add__value {
             margin-right: none; } }
       body .fields .add__button {
@@ -113,40 +155,40 @@ body {
         vertical-align: middle;
         line-height: 1.1;
         margin-left: 10px; }
-        @media only screen and (max-width: 825px) {
+        @media only screen and (max-width: 950px) {
           body .fields .add__button {
-            margin-left: none;
+            margin-left: 0px;
             margin-top: 1rem; } }
         body .fields .add__button:active {
           transform: translateY(2px); }
       body .fields .add__type:focus, body .fields .add__description:focus, body .fields .add__value:focus {
         outline: none;
-        border: 1px solid #6acad3; }
+        border: 1px solid #0B0C10; }
       body .fields .add__button:focus {
         outline: none; }
     body .fields .container {
-      width: 70vw;
+      width: 85vw;
       margin: 30px auto;
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-between;
       padding: 0 2rem 0 2rem; }
-      @media only screen and (max-width: 825px) {
+      @media only screen and (max-width: 1235px) {
         body .fields .container {
-          width: 30rem;
           flex-direction: column;
           justify-content: center;
           align-items: center; } }
       body .fields .container .income {
-        height: 300px;
         width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center; }
         body .fields .container .income__title {
-          color: #6acad3;
-          border-bottom: 2px solid #6acad3; }
+          color: #6acad3; }
+        body .fields .container .income .item__value, body .fields .container .income .item__delete--btn {
+          color: #28B9B5; }
       body .fields .container .expenses {
         width: 50%;
         display: flex;
@@ -154,7 +196,78 @@ body {
         justify-content: flex-start;
         align-items: center; }
         body .fields .container .expenses__title {
-          color: #424791;
-          border-bottom: 2px solid #424791; }
+          color: #424791; }
+        body .fields .container .expenses .item__value, body .fields .container .expenses .item__percentage, body .fields .container .expenses .item__delete--btn {
+          color: #424791; }
+      body .fields .container .item {
+        padding: 12px;
+        border-bottom: 1px solid #0B0C10;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 30rem;
+        margin-bottom: 6px;
+        margin-top: 6px;
+        min-height: 4rem; }
+        @media only screen and (max-width: 580px) {
+          body .fields .container .item {
+            width: 85vw; } }
+        body .fields .container .item:first-child {
+          border-top: 1px solid #0B0C10; }
+        body .fields .container .item__description {
+          min-width: 5rem;
+          max-width: 9rem;
+          margin-right: 2rem;
+          color: #0B0C10;
+          overflow: auto;
+          font-weight: 400; }
+          @media only screen and (max-width: 950px) {
+            body .fields .container .item__description {
+              width: 120px;
+              font-size: 0.8rem; } }
+        body .fields .container .item__value {
+          transition: transform 0.3s;
+          height: auto;
+          overflow: auto; }
+          @media only screen and (max-width: 950px) {
+            body .fields .container .item__value {
+              width: 120px;
+              font-size: 0.6rem; } }
+        body .fields .container .item__percentage {
+          margin-left: 20px;
+          transition: transform 0.3s;
+          font-size: 11px;
+          background-color: #FFDAD9;
+          padding: 3px;
+          border-radius: 3px;
+          width: 32px;
+          text-align: center; }
+          @media only screen and (max-width: 950px) {
+            body .fields .container .item__percentage {
+              display: none; } }
+        body .fields .container .item__delete--btn {
+          font-size: 28px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: inline-block;
+          vertical-align: middle;
+          line-height: 1;
+          display: none; }
+          @media only screen and (max-width: 950px) {
+            body .fields .container .item__delete--btn {
+              display: block;
+              margin-left: 10px; } }
+          body .fields .container .item__delete--btn:focus {
+            outline: none; }
+          body .fields .container .item__delete--btn:active {
+            transform: translateY(2px); }
+        body .fields .container .item:hover .item__delete--btn {
+          display: block; }
+        body .fields .container .item:hover .item__value {
+          transform: translateX(-20px); }
+        body .fields .container .item:hover .item__percentage {
+          transform: translateX(-20px); }
 
 /*# sourceMappingURL=style.css.map */
