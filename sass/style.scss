@@ -9,6 +9,7 @@ $underline: #e7e7e7;
 $void: #0B0C10;
 
 
+
 * {
     margin: 0;
     padding: 0;
@@ -74,9 +75,7 @@ body {
                 padding: 8px;
                 margin-bottom: 10px;
                 
-                background-image: linear-gradient(to right bottom,
-                    rgba(white, 1),
-                    rgba($safe, 0.6));
+                background-color: $wall;
                 border-radius: 5px;
                 color: $void;
                 border: 1px solid $void;
@@ -96,9 +95,7 @@ body {
                 padding: 5px;
                 min-width: 15rem;
                 margin-bottom: 10px;
-                background-image: linear-gradient(to right bottom,
-                    rgba(white, 1),
-                    rgba($safe, 0.8));
+                background-color: $wall;
                 border-radius: 5px;
                 color: $void;
                 border: 1px solid $void;
@@ -114,16 +111,14 @@ body {
             &__income {
                 padding: 5px;
                 margin-bottom: 10px;
-                background-image: linear-gradient(to right bottom,
-                    rgba(white, 1),
-                    rgba($safe, 0.8));
+                background-color: $wall;
                 text-align: center;
                 min-width: 13rem;
                 border-radius: 5px;
                 border: 1px solid $void;
                 max-width: 80vw;
                 overflow: auto;
-                color: $void;
+                color: $garden;
                 
 
                 &--text {
@@ -139,9 +134,7 @@ body {
             }
 
             &__expenses {
-                background-image: linear-gradient(to right bottom,
-                    rgba(white, 1),
-                    rgba($safe, 0.8));
+                background-color: $wall;
                 padding: 5px;
                 text-align: center;
                 border-radius: 5px;
@@ -149,7 +142,7 @@ body {
                 border: 1px solid $void;
                 max-width: 80vw;
                 overflow: auto;
-                color: $void;
+                color: $rich;
 
                 &--text {
                     font-weight: 600;
@@ -312,13 +305,13 @@ body {
                 
 
                 &__title {
-                    color: $safe;
+                    color: $garden;
                    
 
                 }
                 & .item__value,
                 & .item__delete--btn {
-                    color: $sea;
+                    color: $garden;
                 }
 
             }
@@ -383,7 +376,7 @@ body {
 
                     @media only screen and(max-width: 950px) {
                         width: 120px; 
-                        font-size: 0.8rem;
+                        font-size: 0.9rem;
                            
                            
                     }
@@ -398,7 +391,7 @@ body {
                     overflow: auto;
                     @media only screen and(max-width: 950px) {
                      width: 120px; 
-                     font-size: 0.6rem;
+                     font-size: 0.8rem;
                         
                         
                     }

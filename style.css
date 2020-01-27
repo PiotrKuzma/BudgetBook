@@ -41,7 +41,7 @@ body {
         font-weight: 600;
         padding: 8px;
         margin-bottom: 10px;
-        background-image: linear-gradient(to right bottom, white, rgba(106, 202, 211, 0.6));
+        background-color: #f6f8fa;
         border-radius: 5px;
         color: #0B0C10;
         border: 1px solid #0B0C10; }
@@ -57,7 +57,7 @@ body {
         padding: 5px;
         min-width: 15rem;
         margin-bottom: 10px;
-        background-image: linear-gradient(to right bottom, white, rgba(106, 202, 211, 0.8));
+        background-color: #f6f8fa;
         border-radius: 5px;
         color: #0B0C10;
         border: 1px solid #0B0C10;
@@ -70,14 +70,14 @@ body {
       body .display .budget__income {
         padding: 5px;
         margin-bottom: 10px;
-        background-image: linear-gradient(to right bottom, white, rgba(106, 202, 211, 0.8));
+        background-color: #f6f8fa;
         text-align: center;
         min-width: 13rem;
         border-radius: 5px;
         border: 1px solid #0B0C10;
         max-width: 80vw;
         overflow: auto;
-        color: #0B0C10; }
+        color: #1a9283; }
         body .display .budget__income--text {
           font-weight: 600; }
         @media only screen and (max-width: 580px) {
@@ -86,7 +86,7 @@ body {
             min-width: 200px;
             margin-bottom: 10px; } }
       body .display .budget__expenses {
-        background-image: linear-gradient(to right bottom, white, rgba(106, 202, 211, 0.8));
+        background-color: #f6f8fa;
         padding: 5px;
         text-align: center;
         border-radius: 5px;
@@ -94,7 +94,7 @@ body {
         border: 1px solid #0B0C10;
         max-width: 80vw;
         overflow: auto;
-        color: #0B0C10; }
+        color: #424791; }
         body .display .budget__expenses--text {
           font-weight: 600; }
         @media only screen and (max-width: 580px) {
@@ -186,9 +186,9 @@ body {
         justify-content: flex-start;
         align-items: center; }
         body .fields .container .income__title {
-          color: #6acad3; }
+          color: #1a9283; }
         body .fields .container .income .item__value, body .fields .container .income .item__delete--btn {
-          color: #28B9B5; }
+          color: #1a9283; }
       body .fields .container .expenses {
         width: 50%;
         display: flex;
@@ -225,7 +225,7 @@ body {
           @media only screen and (max-width: 950px) {
             body .fields .container .item__description {
               width: 120px;
-              font-size: 0.8rem; } }
+              font-size: 0.9rem; } }
         body .fields .container .item__value {
           transition: transform 0.3s;
           height: auto;
@@ -233,7 +233,7 @@ body {
           @media only screen and (max-width: 950px) {
             body .fields .container .item__value {
               width: 120px;
-              font-size: 0.6rem; } }
+              font-size: 0.8rem; } }
         body .fields .container .item__percentage {
           margin-left: 20px;
           transition: transform 0.3s;
