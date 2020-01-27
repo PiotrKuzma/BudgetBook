@@ -18,46 +18,43 @@ const budgetController = (function() {
   }
 
   const data = {
-     allItems: {
-         exp: [],
-         inc: []
-     },
-     total: {
-         exp: 0,
-         inc: 0
-     }
-  }
+    allItems: {
+      exp: [],
+      inc: []
+    },
+    total: {
+      exp: 0,
+      inc: 0
+    }
+  };
 
   return {
+    addItem: function(type, desc, val) {
+      let newItem;
+      let ID;
+      //setting new Item ID basing on the array length
+      if (data.allItems[type].length > 0) {
+        ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+      } else {
+        ID = 0;
+      }
 
-    addItem: function(type, desc, val,) {
-        let newItem; 
-        let ID;
-        //setting new Item ID basing on the array length
-        if (data.allItems[type].length > 0) {
-            ID = data.allItems[type][data.allItems[type].length -1].id + 1;
-        } else {
-            ID = 0;
-        }
-        
-        //Checking what is the type of operation (inc, exp) and using appropraite class
-        if(type === 'exp') {
-            newItem = new Expense(ID, desc, val)
-        } else if(type === 'inc') {
-            newItem = new Income(ID, desc, val)
-        }
-        //pushing created Item to data Object with type = obj key (no if statement needed)
-        data.addButton[type].push(newItem)
-        //giving other modules access to this new Item
-        return newItem;
+      //Checking what is the type of operation (inc, exp) and using appropraite class
+      if (type === "exp") {
+        newItem = new Expense(ID, desc, val);
+      } else if (type === "inc") {
+        newItem = new Income(ID, desc, val);
+      }
+      //pushing created Item to data Object with type = obj key (no if statement needed)
+      data.allItems[type].push(newItem);
+      //giving other modules access to this new Item
+      return newItem;
     },
     testing: function() {
-        console.log(data);
+      console.log(data);
     }
-  }
-
+  };
 })();
-
 
 ////////////////////////////////////////////////////////////UI UPDATE////////////////////////////////////////////////////////////////UI UPDATE
 const UIupdater = (function() {
@@ -65,7 +62,9 @@ const UIupdater = (function() {
     inputType: ".add__type",
     inputDescription: ".add__description",
     inputValue: ".add__value",
-    addButton: ".add__button"
+    addButton: ".add__button",
+    incomeList: ".income__list",
+    expensesList: ".expenses__list"
   };
 
   return {
@@ -77,6 +76,39 @@ const UIupdater = (function() {
           .value,
         value: document.querySelector(DOMselectors.inputValue).value
       };
+    },
+
+    displayNewItem: function(object, type) {
+      let HTML;
+      let DomNode;
+
+      if (type === "inc") {
+        DomNode = DOMselectors.incomeList;
+        HTML = `
+                    <div class="item" id="income-${object.id}">
+                      <div class="item__description">${object.description}</div>
+      
+                      <div class="item__value">+ ${object.value}</div>
+                      <div class="item__delete">
+                        <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                      </div>
+      
+                    </div>`;
+      } else if (type === "exp") {
+        DomNode = DOMselectors.expenseList;
+        HTML = `     
+                      <div class="item" id="expense-%dataID%">
+                        <div class="item__description">%%Apartment rent%%</div>
+                          
+                        <div class="item__value">- %value%</div>
+                        <div class="item__percentage">%%21%%</div>
+                        <div class="item__delete">
+                            <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                        </div>
+                          
+                      </div>`;
+      }
+      document.querySelector(DomNode).insertAdjacentHTML("beforeend", HTML);
     },
 
     //passing DOMselectors to other modules
@@ -98,17 +130,16 @@ const controller = (function(budgetCtrl, UIctrl) {
   };
 
   const addItem = function() {
-    let input; 
-    let newItem;  
+    let input;
+    let newItem;
     // 1! get input data and store it in Object with getInput from UIupdater module !!!!!!!!!!!!!!!!!!!!!
     input = UIupdater.getInput();
-   
 
     //2. Add Item to the Budget Data Structure -> pass input Object as arguments !!!!!!!!!!!!!!!!!!!!!!!!
     newItem = budgetCtrl.addItem(input.type, input.description, input.value);
-   
-    //3. Update the UI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+    //3. Update the UI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    UIupdater.displayNewItem(newItem, input.type);
     //4. Calculate the Budget !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     //5. Update The UI again (budget) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
