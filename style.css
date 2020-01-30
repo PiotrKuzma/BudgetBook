@@ -10,20 +10,18 @@ body {
   background-color: #f6f8fa; }
   body .display {
     min-height: 48vh;
-    background-image: url("img/finance.png");
+    background-image: url("img/cash.png");
     background-repeat: no-repeat;
     background-position: top;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 12px; }
-    @media only screen and (max-width: 710px) {
-      body .display {
-        background-image: url("img/finance.medium.png"); } }
     @media only screen and (max-width: 580px) {
       body .display {
-        background-image: url("img/finance.small.png");
-        background-position: bottom; } }
+        background-image: url("img/cash.png");
+        background-position: right;
+        margin-top: 1px; } }
     body .display .budget {
       min-width: 350px;
       color: #fff;
@@ -33,7 +31,7 @@ body {
       justify-content: center; }
       @media only screen and (max-width: 580px) {
         body .display .budget {
-          min-width: 200px; } }
+          min-width: 85vw; } }
       body .display .budget__title {
         font-size: 18px;
         text-align: center;
@@ -41,13 +39,16 @@ body {
         font-weight: 600;
         padding: 8px;
         margin-bottom: 10px;
+        width: 250px;
         background-color: #f6f8fa;
         border-radius: 5px;
         color: #0B0C10;
+        box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
         border: 1px solid #0B0C10; }
         @media only screen and (max-width: 580px) {
           body .display .budget__title {
-            font-size: 13px; } }
+            min-width: 85vw;
+            font-size: 22px; } }
       body .display .budget__value {
         font-weight: 300;
         font-size: 20px;
@@ -55,52 +56,54 @@ body {
         margin-bottom: 6rem;
         letter-spacing: 2px;
         padding: 5px;
-        min-width: 15rem;
+        min-width: 250px;
         margin-bottom: 10px;
         background-color: #f6f8fa;
         border-radius: 5px;
         color: #0B0C10;
-        border: 1px solid #0B0C10;
+        box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
         max-width: 80vw;
-        overflow: auto; }
+        overflow: auto;
+        border: 1px solid #0B0C10; }
         @media only screen and (max-width: 580px) {
           body .display .budget__value {
-            font-size: 13px;
-            min-width: 200px; } }
+            font-size: 18px;
+            min-width: 85vw; } }
       body .display .budget__income {
         padding: 5px;
         margin-bottom: 10px;
         background-color: #f6f8fa;
         text-align: center;
-        min-width: 13rem;
+        min-width: 250px;
         border-radius: 5px;
-        border: 1px solid #0B0C10;
+        box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
         max-width: 80vw;
         overflow: auto;
-        color: #1a9283; }
+        color: #1a9283;
+        border: 1px solid #0B0C10; }
         body .display .budget__income--text {
           font-weight: 600; }
         @media only screen and (max-width: 580px) {
           body .display .budget__income {
-            font-size: 13px;
-            min-width: 200px;
+            font-size: 16px;
+            min-width: 85vw;
             margin-bottom: 10px; } }
       body .display .budget__expenses {
         background-color: #f6f8fa;
         padding: 5px;
         text-align: center;
         border-radius: 5px;
-        min-width: 13rem;
+        min-width: 250px;
+        box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
         border: 1px solid #0B0C10;
-        max-width: 80vw;
         overflow: auto;
         color: #424791; }
         body .display .budget__expenses--text {
           font-weight: 600; }
         @media only screen and (max-width: 580px) {
           body .display .budget__expenses {
-            font-size: 13px;
-            min-width: 200px; } }
+            font-size: 16px;
+            width: 85vw; } }
   body .fields {
     display: flex;
     flex-direction: column;
@@ -109,13 +112,12 @@ body {
     background-image: url(); }
     body .fields .add {
       padding: 14px;
-      border-bottom: 1px solid #e7e7e7;
-      background-color: #16a09d;
+      border: 1px solid #0B0C10;
       border-radius: 5px;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      width: 50rem; }
+      width: 66vw; }
       @media only screen and (max-width: 950px) {
         body .fields .add {
           width: 85vw;
@@ -186,7 +188,8 @@ body {
         justify-content: flex-start;
         align-items: center; }
         body .fields .container .income__title {
-          color: #1a9283; }
+          color: #1a9283;
+          margin-bottom: 20px; }
         body .fields .container .income .item__value, body .fields .container .income .item__delete--btn {
           color: #1a9283; }
       body .fields .container .expenses {
@@ -196,7 +199,11 @@ body {
         justify-content: flex-start;
         align-items: center; }
         body .fields .container .expenses__title {
-          color: #424791; }
+          color: #424791;
+          margin-bottom: 20px; }
+          @media only screen and (max-width: 1235px) {
+            body .fields .container .expenses__title {
+              margin-top: 20px; } }
         body .fields .container .expenses .item__value, body .fields .container .expenses .item__percentage, body .fields .container .expenses .item__delete--btn {
           color: #424791; }
       body .fields .container .item {

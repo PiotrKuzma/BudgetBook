@@ -34,7 +34,7 @@ body {
     .display {
 
         min-height: 48vh;
-        background-image: url("img/finance.png");
+        background-image: url("img/cash.png");
         background-repeat: no-repeat;
         background-position: top;
         display: flex;
@@ -42,14 +42,12 @@ body {
         align-items: center;
         margin-top: 12px;
 
-        @media only screen and(max-width: 710px) {
-            background-image: url("img/finance.medium.png");
-            
-        }
+       
 
         @media only screen and(max-width: 580px) {
-            background-image: url("img/finance.small.png");
-            background-position: bottom;
+            background-image: url("img/cash.png");
+            background-position: right;
+            margin-top: 1px;
         }
 
         .budget {
@@ -62,8 +60,10 @@ body {
             align-items: center;
             justify-content: center;
 
+            
+
             @media only screen and(max-width: 580px) {
-                min-width: 200px;
+                min-width: 85vw;
             
             }
 
@@ -74,15 +74,18 @@ body {
                 font-weight: 600;
                 padding: 8px;
                 margin-bottom: 10px;
-                
+                width: 250px;
                 background-color: $wall;
                 border-radius: 5px;
                 color: $void;
+                box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
                 border: 1px solid $void;
 
                 @media only screen and(max-width: 580px) {
-                    font-size: 13px;
-            
+                    
+                    min-width: 85vw;
+                    font-size: 22px;
+                   
                 }
             }
 
@@ -93,18 +96,19 @@ body {
                 margin-bottom: 6rem;
                 letter-spacing: 2px;
                 padding: 5px;
-                min-width: 15rem;
+                min-width: 250px;
                 margin-bottom: 10px;
                 background-color: $wall;
                 border-radius: 5px;
                 color: $void;
-                border: 1px solid $void;
+                box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
                 max-width: 80vw;
                 overflow: auto;
+                border: 1px solid $void;
 
                 @media only screen and(max-width: 580px) {
-                    font-size: 13px;
-                    min-width: 200px;
+                    font-size: 18px;
+                    min-width: 85vw;
                 }
             }
 
@@ -113,12 +117,13 @@ body {
                 margin-bottom: 10px;
                 background-color: $wall;
                 text-align: center;
-                min-width: 13rem;
+                min-width: 250px;
                 border-radius: 5px;
-                border: 1px solid $void;
+                box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
                 max-width: 80vw;
                 overflow: auto;
                 color: $garden;
+                border: 1px solid $void;
                 
 
                 &--text {
@@ -126,8 +131,8 @@ body {
                 }
 
                 @media only screen and(max-width: 580px) {
-                    font-size: 13px;
-                    min-width: 200px;
+                    font-size: 16px;
+                    min-width: 85vw;
                     margin-bottom: 10px;
             
                 }
@@ -138,9 +143,9 @@ body {
                 padding: 5px;
                 text-align: center;
                 border-radius: 5px;
-                min-width: 13rem;
+                min-width: 250px;
+                box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
                 border: 1px solid $void;
-                max-width: 80vw;
                 overflow: auto;
                 color: $rich;
 
@@ -149,8 +154,8 @@ body {
                 }
 
                 @media only screen and(max-width: 580px) {
-                    font-size: 13px;
-                    min-width: 200px;
+                    font-size: 16px;
+                    width: 85vw;
             
                 }
             }
@@ -166,17 +171,18 @@ body {
         justify-content: center;
         align-items: center;
         background-image: url();
+        
 
         .add {
 
             padding: 14px;
-            border-bottom: 1px solid #e7e7e7;
-            background-color: $calm;
+           
+            border: 1px solid $void;
             border-radius: 5px;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
-            width: 50rem;
+            width: 66vw;
 
             @media only screen and(max-width: 950px) {
                 width: 85vw;
@@ -306,6 +312,7 @@ body {
 
                 &__title {
                     color: $garden;
+                    margin-bottom: 20px;
                    
 
                 }
@@ -325,13 +332,16 @@ body {
                 align-items: center;
                 
 
-                @media only screen and(max-width: 580px) {
-                   
                 
-                }
 
                 &__title {
                     color: $rich;
+                    margin-bottom: 20px;
+
+                    @media only screen and(max-width: 1235px) {
+                        margin-top: 20px;
+                
+                    }
                    
                     
                 }
