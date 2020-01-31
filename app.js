@@ -111,6 +111,17 @@ const UIupdater = (function() {
       document.querySelector(DomNode).insertAdjacentHTML("beforeend", HTML);
     },
 
+
+    clearInputs: function() {
+      let fields;
+      let fieldsConverted;
+      fields = document.querySelectorAll(DOMselectors.inputDescription + ',' +DOMselectors.inputValue)
+      fieldsConverted = Array.prototype.slice.call(fields);
+      fieldsConverted.forEach( (currVal)=> {
+        currVal.value = "";
+      })
+    },
+
     //passing DOMselectors to other modules
     exposeDOMstrings: function() {
       return DOMselectors;
@@ -140,6 +151,7 @@ const controller = (function(budgetCtrl, UIctrl) {
 
     //3. Update the UI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     UIupdater.displayNewItem(newItem, input.type);
+    UIupdater.clearInputs();
     //4. Calculate the Budget !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     //5. Update The UI again (budget) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
