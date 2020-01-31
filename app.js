@@ -95,7 +95,7 @@ const UIupdater = (function() {
       
                     </div>`;
       } else if (type === "exp") {
-        DomNode = DOMselectors.expenseList;
+        DomNode = DOMselectors.expensesList;
         HTML = `     
                       <div class="item" id="expense-${object.id}">
                         <div class="item__description">${object.description}</div>
