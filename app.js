@@ -17,6 +17,14 @@ const budgetController = (function() {
     }
   }
 
+  const calculateTotal = function(type) {
+    let sum = 0;
+    data.allItems[type].forEach(cur => {
+      sum = sum + cur.value;
+      data.total[type] = sum;
+    });
+  };
+
   const data = {
     allItems: {
       exp: [],
@@ -25,7 +33,9 @@ const budgetController = (function() {
     total: {
       exp: 0,
       inc: 0
-    }
+    },
+    budget: 0,
+    perc: -1
   };
 
   return {
@@ -50,6 +60,30 @@ const budgetController = (function() {
       //giving other modules access to this new Item
       return newItem;
     },
+
+    calculateBudget: function() {
+      // calc total income and expenses
+      calculateTotal("exp");
+      calculateTotal("inc");
+      //calc the available budget
+      data.budget = data.total.inc - data.total.exp;
+      if (data.total.inc > 0) {
+        //calc percentage of income spent
+        data.perc = Math.round((data.total.exp / data.total.inc) * 100);
+      } else {
+        data.perc = -1;
+      }
+    },
+
+    getBudget: function() {
+      return {
+        budget: data.budget,
+        totalIncome: data.total.inc,
+        totalExpenses: data.total.exp,
+        percentage: data.perc
+      };
+    },
+
     testing: function() {
       console.log(data);
     }
@@ -74,7 +108,7 @@ const UIupdater = (function() {
         type: document.querySelector(DOMselectors.inputType).value,
         description: document.querySelector(DOMselectors.inputDescription)
           .value,
-        value: document.querySelector(DOMselectors.inputValue).value
+        value: parseFloat(document.querySelector(DOMselectors.inputValue).value)
       };
     },
 
@@ -111,15 +145,16 @@ const UIupdater = (function() {
       document.querySelector(DomNode).insertAdjacentHTML("beforeend", HTML);
     },
 
-
     clearInputs: function() {
       let fields;
       let fieldsConverted;
-      fields = document.querySelectorAll(DOMselectors.inputDescription + ',' +DOMselectors.inputValue)
+      fields = document.querySelectorAll(
+        DOMselectors.inputDescription + "," + DOMselectors.inputValue
+      );
       fieldsConverted = Array.prototype.slice.call(fields);
-      fieldsConverted.forEach( (currVal)=> {
+      fieldsConverted.forEach(currVal => {
         currVal.value = "";
-      })
+      });
     },
 
     //passing DOMselectors to other modules
@@ -140,21 +175,31 @@ const controller = (function(budgetCtrl, UIctrl) {
     });
   };
 
+  const updateBudget = function() {
+    // 1. Calculate Budget
+    budgetController.calculateBudget();
+    // 2. Return Budget
+    let budgetCollections = budgetController.getBudget();
+    //3. Display changes in UI
+    console.log(budgetCollections);
+  };
+
   const addItem = function() {
     let input;
     let newItem;
     // 1! get input data and store it in Object with getInput from UIupdater module !!!!!!!!!!!!!!!!!!!!!
     input = UIupdater.getInput();
+    if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
+      //2. Add Item to the Budget Data Structure -> pass input Object as arguments !!!!!!!!!!!!!!!!!!!!!!!!
+      newItem = budgetCtrl.addItem(input.type, input.description, input.value);
 
-    //2. Add Item to the Budget Data Structure -> pass input Object as arguments !!!!!!!!!!!!!!!!!!!!!!!!
-    newItem = budgetCtrl.addItem(input.type, input.description, input.value);
-
-    //3. Update the UI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    UIupdater.displayNewItem(newItem, input.type);
-    UIupdater.clearInputs();
-    //4. Calculate the Budget !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    //5. Update The UI again (budget) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      //3. Update the UI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      UIupdater.displayNewItem(newItem, input.type);
+      UIupdater.clearInputs();
+      //4. Calculate the Budget !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      updateBudget();
+      //5. Update The UI again (budget) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
   };
 
   return {
