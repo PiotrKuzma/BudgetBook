@@ -6,6 +6,7 @@ const budgetController = (function() {
       this.id = id;
       this.description = description;
       this.value = value;
+      this.percentage = -1;
     }
   }
 
@@ -19,10 +20,10 @@ const budgetController = (function() {
 
   const calculateTotal = function(type) {
     let sum = 0;
-    data.allItems[type].forEach(cur => {
-      sum = sum + cur.value;
-      data.total[type] = sum;
+    data.allItems[type].forEach(function(cur) {
+      sum += cur.value;
     });
+    data.total[type] = sum;
   };
 
   const data = {
@@ -59,6 +60,19 @@ const budgetController = (function() {
       data.allItems[type].push(newItem);
       //giving other modules access to this new Item
       return newItem;
+    },
+
+    deleteItem: function(type, id) {
+      let index;
+      let idCollection;
+      idCollection = data.allItems[type].map(function(current) {
+        return current.id;
+      });
+      index = idCollection.indexOf(id);
+
+      if (index !== -1) {
+        data.allItems[type].splice(index, 1);
+      }
     },
 
     calculateBudget: function() {
@@ -98,7 +112,12 @@ const UIupdater = (function() {
     inputValue: ".add__value",
     addButton: ".add__button",
     incomeList: ".income__list",
-    expensesList: ".expenses__list"
+    expensesList: ".expenses__list",
+    budget: ".budget__value",
+    income: ".budget__income--value",
+    expenses: ".budget__expenses--value",
+    expensesPerc: ".budget__expenses--percentage",
+    container: ".container"
   };
 
   return {
@@ -119,7 +138,7 @@ const UIupdater = (function() {
       if (type === "inc") {
         DomNode = DOMselectors.incomeList;
         HTML = `
-                    <div class="item" id="income-${object.id}">
+                    <div class="item" id="inc-${object.id}">
                       <div class="item__description">${object.description}</div>
       
                       <div class="item__value">+ ${object.value}</div>
@@ -131,7 +150,7 @@ const UIupdater = (function() {
       } else if (type === "exp") {
         DomNode = DOMselectors.expensesList;
         HTML = `     
-                      <div class="item" id="expense-${object.id}">
+                      <div class="item" id="exp-${object.id}">
                         <div class="item__description">${object.description}</div>
                           
                         <div class="item__value">- ${object.value}</div>
@@ -143,6 +162,11 @@ const UIupdater = (function() {
                       </div>`;
       }
       document.querySelector(DomNode).insertAdjacentHTML("beforeend", HTML);
+    },
+
+    deleteFromUI: function(selectionID) {
+      let el = document.getElementById(selectionID);
+      el.parentNode.removeChild(el);
     },
 
     clearInputs: function() {
@@ -157,13 +181,27 @@ const UIupdater = (function() {
       });
     },
 
+    displayBudget: function(obj) {
+      document.querySelector(DOMselectors.budget).textContent = obj.budget;
+      document.querySelector(DOMselectors.income).textContent = obj.totalIncome;
+      document.querySelector(DOMselectors.expenses).textContent =
+        obj.totalExpenses;
+
+      if (obj.percentage > 0) {
+        document.querySelector(DOMselectors.expensesPerc).textContent =
+          obj.percentage + "%";
+      } else {
+        document.querySelector(DOMselectors.expensesPerc).textContent = "--";
+      }
+    },
+
     //passing DOMselectors to other modules
     exposeDOMstrings: function() {
       return DOMselectors;
     }
   };
 })();
-//////////////////////////////////////////////////////////CONTROLLER//////////////////////////////////////////////////////////////////CONTROLLER
+///////////////////////////////////////////////////////APP CONTROLLER/////////////////////////////////////////////////////////////APP CONTROLLER
 const controller = (function(budgetCtrl, UIctrl) {
   const DOM = UIupdater.exposeDOMstrings();
   const createEventListeners = function() {
@@ -173,15 +211,18 @@ const controller = (function(budgetCtrl, UIctrl) {
         addItem();
       }
     });
+    document
+      .querySelector(DOM.container)
+      .addEventListener("click", ctrlDeleteItem);
   };
 
   const updateBudget = function() {
     // 1. Calculate Budget
     budgetController.calculateBudget();
     // 2. Return Budget
-    let budgetCollections = budgetController.getBudget();
+    let budget = budgetController.getBudget();
     //3. Display changes in UI
-    console.log(budgetCollections);
+    UIupdater.displayBudget(budget);
   };
 
   const addItem = function() {
@@ -199,6 +240,28 @@ const controller = (function(budgetCtrl, UIctrl) {
       //4. Calculate the Budget !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       updateBudget();
       //5. Update The UI again (budget) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
+  };
+
+  const ctrlDeleteItem = function(event) {
+    let itemID;
+    let split;
+    let type;
+    let ID;
+    itemID = event.target.parentNode.parentNode.parentNode.id;
+
+    if (itemID) {
+      split = itemID.split("-");
+      type = split[0];
+      ID = parseInt(split[1]);
+
+      //1. Delete from Data structure
+      budgetController.deleteItem(type, ID);
+
+      //2. Delete from UI
+      UIupdater.deleteFromUI(itemID);
+      //3. Update Budget
+      updateBudget();
     }
   };
 
