@@ -9,6 +9,17 @@ const budgetController = (function() {
       this.percentage = -1;
     }
   }
+  Expense.prototype.calcPerc = function(totalIncome) {
+    if (totalIncome > 0) {
+      this.percentage = Math.round((this.value / totalIncome) * 100);
+    } else {
+      this.percentage = -1;
+    }
+  };
+
+  Expense.prototype.getPerc = function () {
+    return this.percentage;
+  }
 
   class Income {
     constructor(id, description, value) {
@@ -87,6 +98,19 @@ const budgetController = (function() {
       } else {
         data.perc = -1;
       }
+    },
+
+    calculatePercentages: function() {
+      data.allItems.exp.forEach(function(cur){
+        cur.calcPerc(data.total.inc);
+      })
+    },
+
+    getPercentages: function () {
+      const allPercentages = data.allItems.exp.map(function(cur) {
+        return cur.getPerc();
+      })
+      return allPercentages;
     },
 
     getBudget: function() {
@@ -225,10 +249,19 @@ const controller = (function(budgetCtrl, UIctrl) {
     UIupdater.displayBudget(budget);
   };
 
+  const updatePercentages = function() {
+    //1. Calculate percentages
+    budgetController.calculatePercentages();
+    //2. Read from Budget controller
+    const percentages = budgetController.getPercentages();
+    //3. Update UI
+    console.log(percentages);
+  };
+
   const addItem = function() {
     let input;
     let newItem;
-    // 1! get input data and store it in Object with getInput from UIupdater module !!!!!!!!!!!!!!!!!!!!!
+    // 1! get input data and store it in Object with getInput from UIupdater module !!!!!!!!!!!!!!!!!!!!!!!
     input = UIupdater.getInput();
     if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
       //2. Add Item to the Budget Data Structure -> pass input Object as arguments !!!!!!!!!!!!!!!!!!!!!!!!
@@ -239,7 +272,8 @@ const controller = (function(budgetCtrl, UIctrl) {
       UIupdater.clearInputs();
       //4. Calculate the Budget !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       updateBudget();
-      //5. Update The UI again (budget) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      //6. Update The UI again (Percentages) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      updatePercentages();
     }
   };
 
