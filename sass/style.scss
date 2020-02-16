@@ -6,7 +6,7 @@ $calm: #16a09d;
 $wall: #f6f8fa;
 $sea: #28B9B5;
 $underline: #e7e7e7;
-$void: #0B0C10;
+$void: #24292e;
 
 
 
@@ -24,11 +24,11 @@ body {
     font-size: 16px;
     font-weight: 400;
     background-color: $wall;
-    
-    
-   
 
-    // Summary Part of the App
+    .exp-focus:focus  {
+        border: 1px solid $rich !important;
+    }       
+      // Summary Part of the App
 
 
     .display {
@@ -79,7 +79,7 @@ body {
                 border-radius: 5px;
                 color: $void;
                 box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
-                border: 1px solid $void;
+                border: 2px solid $underline;
 
                 @media only screen and(max-width: 580px) {
                     
@@ -104,7 +104,7 @@ body {
                 box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
                 max-width: 80vw;
                 overflow: auto;
-                border: 1px solid $void;
+                border: 2px solid $underline;
 
                 @media only screen and(max-width: 580px) {
                     font-size: 18px;
@@ -123,7 +123,7 @@ body {
                 max-width: 80vw;
                 overflow: auto;
                 color: $garden;
-                border: 1px solid $void;
+                border: 2px solid $underline;
                 
 
                 &--text {
@@ -145,7 +145,7 @@ body {
                 border-radius: 5px;
                 min-width: 250px;
                 box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
-                border: 1px solid $void;
+                border: 2px solid $underline;
                 overflow: auto;
                 color: $rich;
 
@@ -170,19 +170,23 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-image: url();
+        width: 100%;
+        
         
 
         .add {
 
             padding: 14px;
-           
-            border: 1px solid $void;
+            position: relative;
+            border: 2px solid $underline;
+            box-shadow: -5px 6px 6px -1px rgba(0,0,0,0.15);
             border-radius: 5px;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             width: 66vw;
+           
+            
 
             @media only screen and(max-width: 950px) {
                 width: 85vw;
@@ -190,6 +194,10 @@ body {
                 justify-content: center;
                 
             }
+
+
+            
+              
            
 
 
@@ -266,7 +274,7 @@ body {
             &__description:focus,
             &__value:focus {
                 outline: none;
-                border: 1px solid $void;
+                border: 1px solid $garden;
             }
 
             &__button:focus { outline: none; }

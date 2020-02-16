@@ -8,6 +8,8 @@ body {
   font-size: 16px;
   font-weight: 400;
   background-color: #f6f8fa; }
+  body .exp-focus:focus {
+    border: 1px solid #424791 !important; }
   body .display {
     min-height: 48vh;
     background-image: url("img/cash.png");
@@ -42,9 +44,9 @@ body {
         width: 250px;
         background-color: #f6f8fa;
         border-radius: 5px;
-        color: #0B0C10;
+        color: #24292e;
         box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
-        border: 1px solid #0B0C10; }
+        border: 2px solid #e7e7e7; }
         @media only screen and (max-width: 580px) {
           body .display .budget__title {
             min-width: 85vw;
@@ -60,11 +62,11 @@ body {
         margin-bottom: 10px;
         background-color: #f6f8fa;
         border-radius: 5px;
-        color: #0B0C10;
+        color: #24292e;
         box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
         max-width: 80vw;
         overflow: auto;
-        border: 1px solid #0B0C10; }
+        border: 2px solid #e7e7e7; }
         @media only screen and (max-width: 580px) {
           body .display .budget__value {
             font-size: 18px;
@@ -80,7 +82,7 @@ body {
         max-width: 80vw;
         overflow: auto;
         color: #1a9283;
-        border: 1px solid #0B0C10; }
+        border: 2px solid #e7e7e7; }
         body .display .budget__income--text {
           font-weight: 600; }
         @media only screen and (max-width: 580px) {
@@ -95,7 +97,7 @@ body {
         border-radius: 5px;
         min-width: 250px;
         box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
-        border: 1px solid #0B0C10;
+        border: 2px solid #e7e7e7;
         overflow: auto;
         color: #424791; }
         body .display .budget__expenses--text {
@@ -109,10 +111,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(); }
+    width: 100%; }
     body .fields .add {
       padding: 14px;
-      border: 1px solid #0B0C10;
+      position: relative;
+      border: 2px solid #e7e7e7;
+      box-shadow: -5px 6px 6px -1px rgba(0, 0, 0, 0.15);
       border-radius: 5px;
       display: flex;
       flex-direction: row;
@@ -165,7 +169,7 @@ body {
           transform: translateY(2px); }
       body .fields .add__type:focus, body .fields .add__description:focus, body .fields .add__value:focus {
         outline: none;
-        border: 1px solid #0B0C10; }
+        border: 1px solid #1a9283; }
       body .fields .add__button:focus {
         outline: none; }
     body .fields .container {
@@ -208,7 +212,7 @@ body {
           color: #424791; }
       body .fields .container .item {
         padding: 12px;
-        border-bottom: 1px solid #0B0C10;
+        border-bottom: 1px solid #24292e;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -221,12 +225,12 @@ body {
           body .fields .container .item {
             width: 85vw; } }
         body .fields .container .item:first-child {
-          border-top: 1px solid #0B0C10; }
+          border-top: 1px solid #24292e; }
         body .fields .container .item__description {
           min-width: 5rem;
           max-width: 9rem;
           margin-right: 2rem;
-          color: #0B0C10;
+          color: #24292e;
           overflow: auto;
           font-weight: 400; }
           @media only screen and (max-width: 950px) {

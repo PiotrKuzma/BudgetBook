@@ -17,9 +17,9 @@ const budgetController = (function() {
     }
   };
 
-  Expense.prototype.getPerc = function () {
+  Expense.prototype.getPerc = function() {
     return this.percentage;
-  }
+  };
 
   class Income {
     constructor(id, description, value) {
@@ -101,15 +101,15 @@ const budgetController = (function() {
     },
 
     calculatePercentages: function() {
-      data.allItems.exp.forEach(function(cur){
+      data.allItems.exp.forEach(function(cur) {
         cur.calcPerc(data.total.inc);
-      })
+      });
     },
 
-    getPercentages: function () {
+    getPercentages: function() {
       const allPercentages = data.allItems.exp.map(function(cur) {
         return cur.getPerc();
-      })
+      });
       return allPercentages;
     },
 
@@ -141,7 +141,15 @@ const UIupdater = (function() {
     income: ".budget__income--value",
     expenses: ".budget__expenses--value",
     expensesPerc: ".budget__expenses--percentage",
-    container: ".container"
+    container: ".container",
+    percentageLabel: ".item__percentage",
+    date: ".budget__title--month"
+  };
+
+  const nodeListForEach = function(list, callback) {
+    for (let i = 0; i < list.length; i++) {
+      callback(list[i], i);
+    }
   };
 
   return {
@@ -178,7 +186,7 @@ const UIupdater = (function() {
                         <div class="item__description">${object.description}</div>
                           
                         <div class="item__value">- ${object.value}</div>
-                        <div class="item__percentage">%%</div>
+                        <div class="item__percentage"></div>
                         <div class="item__delete">
                             <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
                         </div>
@@ -219,6 +227,52 @@ const UIupdater = (function() {
       }
     },
 
+    displayPercentages: function(percentages) {
+      let fields = document.querySelectorAll(DOMselectors.percentageLabel);
+      
+      nodeListForEach(fields, function(current, index) {
+        if (percentages[index] > 0) {
+          current.textContent = percentages[index] + "%";
+        } else {
+          current.textContent = "--" + "%";
+        }
+      });
+    },
+
+    displayMonth: function() {
+      const pres = new Date();
+      const year = pres.getFullYear();
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+      const month = pres.getMonth();
+      const place = document.querySelector(DOMselectors.date);
+      place.textContent = months[month] + " " + year;
+    },
+
+    coloredType: function() {
+      let fields = document.querySelectorAll(
+        DOMselectors.inputType + "," +
+        DOMselectors.inputDescription + "," +
+        DOMselectors.inputValue
+      )
+
+      nodeListForEach(fields, function(current) {
+        current.classList.toggle('exp-focus');
+      }) 
+    },
+
     //passing DOMselectors to other modules
     exposeDOMstrings: function() {
       return DOMselectors;
@@ -235,9 +289,9 @@ const controller = (function(budgetCtrl, UIctrl) {
         addItem();
       }
     });
-    document
-      .querySelector(DOM.container)
-      .addEventListener("click", ctrlDeleteItem);
+    document.querySelector(DOM.container).addEventListener("click", ctrlDeleteItem);
+    document.querySelector(DOM.inputType).addEventListener('change', UIupdater.coloredType);
+    
   };
 
   const updateBudget = function() {
@@ -255,7 +309,7 @@ const controller = (function(budgetCtrl, UIctrl) {
     //2. Read from Budget controller
     const percentages = budgetController.getPercentages();
     //3. Update UI
-    console.log(percentages);
+    UIupdater.displayPercentages(percentages);
   };
 
   const addItem = function() {
@@ -301,7 +355,7 @@ const controller = (function(budgetCtrl, UIctrl) {
 
   return {
     initialize: function() {
-      console.log("App started");
+      UIupdater.displayMonth();
       createEventListeners();
     }
   };
