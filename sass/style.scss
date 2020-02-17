@@ -1,11 +1,10 @@
-$safe: #6acad3;
+
 $garden: #1a9283;
 $rich: #424791;
 $gold: #daba30;
-$calm: #16a09d;
-$wall: #f6f8fa;
-$sea: #28B9B5;
-$underline: #e7e7e7;
+$gold2: #dfa40a;
+$wall: #ECECEC;
+$underline: #D4D4D4;
 $void: #24292e;
 
 
@@ -25,6 +24,7 @@ body {
     font-weight: 400;
     background-color: $wall;
 
+    // JS inserted class
     .exp-focus:focus  {
         border: 1px solid $rich !important;
     }       
@@ -52,13 +52,19 @@ body {
 
         .budget {
             
-            min-width: 350px;
+            
             
             color: #fff;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            flex-direction: row;
+            align-items: flex-start;
+           
+            
+            @media only screen and(max-width: 1235px) {
+                min-width: 85vw;
+                flex-direction: column;
+                align-items: center;
+            }
 
             
 
@@ -75,16 +81,28 @@ body {
                 padding: 8px;
                 margin-bottom: 10px;
                 width: 250px;
-                background-color: $wall;
-                border-radius: 5px;
                 color: $void;
-                box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
-                border: 2px solid $underline;
+                margin-right: 40px;
+
+                
+
+                .deco {
+                    color: $gold;
+                    font-size: 23px;
+                   
+                   
+
+                }
+                @media only screen and(max-width: 1235px) {
+                    margin-right: 0px;
+                }
 
                 @media only screen and(max-width: 580px) {
                     
                     min-width: 85vw;
                     font-size: 22px;
+                    margin-bottom: 25px;
+                    margin-top: 20px;
                    
                 }
             }
@@ -97,14 +115,22 @@ body {
                 letter-spacing: 2px;
                 padding: 5px;
                 min-width: 250px;
+                height: 80px;
                 margin-bottom: 10px;
                 background-color: $wall;
                 border-radius: 5px;
                 color: $void;
-                box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
+                box-shadow: -5px 6px 6px -1px rgba(0,0,0,0.15);
                 max-width: 80vw;
                 overflow: auto;
-                border: 2px solid $underline;
+                border: 1px solid $underline;
+                margin-right: 10px;
+                text-align: center;
+                line-height: 50px;
+
+                @media only screen and(max-width: 1235px) {
+                    margin-right: 0px;
+                }
 
                 @media only screen and(max-width: 580px) {
                     font-size: 18px;
@@ -119,15 +145,21 @@ body {
                 text-align: center;
                 min-width: 250px;
                 border-radius: 5px;
-                box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
+                box-shadow: -5px 6px 6px -1px rgba(0,0,0,0.15);
                 max-width: 80vw;
                 overflow: auto;
                 color: $garden;
-                border: 2px solid $underline;
+                border: 1px solid $underline;
+                margin-right: 10px;
+                height: 80px;
                 
 
                 &--text {
                     font-weight: 600;
+                }
+
+                @media only screen and(max-width: 1235px) {
+                    margin-right: 0px;
                 }
 
                 @media only screen and(max-width: 580px) {
@@ -144,13 +176,19 @@ body {
                 text-align: center;
                 border-radius: 5px;
                 min-width: 250px;
-                box-shadow: -11px 6px 15px -1px rgba(0,0,0,0.75);
-                border: 2px solid $underline;
+                box-shadow: -5px 6px 6px -1px rgba(0,0,0,0.15);
+                border: 1px solid $underline;
                 overflow: auto;
                 color: $rich;
+                height: 80px;
+               
 
                 &--text {
                     font-weight: 600;
+                }
+
+                @media only screen and(max-width: 1235px) {
+                    margin-right: 0px;
                 }
 
                 @media only screen and(max-width: 580px) {
@@ -260,6 +298,7 @@ body {
                 vertical-align: middle;
                 line-height: 1.1;
                 margin-left: 10px;
+                
 
                 @media only screen and(max-width: 950px) {
                     margin-left: 0px;
@@ -268,6 +307,11 @@ body {
                 }
 
                 &:active { transform: translateY(2px); }
+                &:hover {
+                    color: $gold2;
+                   
+                
+                }
             }
 
             &__type:focus,
@@ -364,7 +408,7 @@ body {
 
             .item {
                 padding: 12px;
-                border-bottom: 1px solid $void;
+                border-bottom: 1px solid $underline;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
@@ -380,8 +424,12 @@ body {
             
                 }
 
+                &:hover {
+                    box-shadow: -5px 6px 6px -1px rgba(0,0,0,0.15);
+                }
 
-                &:first-child { border-top: 1px solid $void; }
+
+                &:first-child { border-top: 1px solid $underline; }
                
 
                 &__description {
@@ -405,10 +453,10 @@ body {
                     transition: transform 0.3s;
                     
                     height: auto;
-                    
+                    width: 120px; 
                     overflow: auto;
                     @media only screen and(max-width: 950px) {
-                     width: 120px; 
+                     
                      font-size: 0.8rem;
                         
                         
@@ -420,7 +468,7 @@ body {
                     margin-left: 20px;
                     transition: transform 0.3s;
                     font-size: 11px;
-                    background-color: #FFDAD9;
+                    background-color: $gold;
                     padding: 3px;
                     border-radius: 3px;
                     width: 32px;
@@ -443,6 +491,10 @@ body {
                     line-height: 1;
                     display: none;
 
+                    &:hover {
+                        color: $gold2;
+                    }
+
                     @media only screen and(max-width: 950px) {
                         display: block;
                         margin-left: 10px;
@@ -458,6 +510,23 @@ body {
                 &:hover .item__percentage { transform: translateX(-20px); }
             }
 
+        }
+    }
+    .footer {
+        font-size: 13px;
+        color: $void;
+        padding: 5px;
+        text-align: center;
+        margin-top:14%;
+        &__link {
+            text-decoration: none;
+
+            &:focus, &:active {
+                text-decoration: none;
+            }
+            &:visited {
+                color: $gold2;
+            }
         }
     }
 }

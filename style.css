@@ -7,7 +7,7 @@ body {
   font-family: Nunito;
   font-size: 16px;
   font-weight: 400;
-  background-color: #f6f8fa; }
+  background-color: #ECECEC; }
   body .exp-focus:focus {
     border: 1px solid #424791 !important; }
   body .display {
@@ -25,12 +25,15 @@ body {
         background-position: right;
         margin-top: 1px; } }
     body .display .budget {
-      min-width: 350px;
       color: #fff;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center; }
+      flex-direction: row;
+      align-items: flex-start; }
+      @media only screen and (max-width: 1235px) {
+        body .display .budget {
+          min-width: 85vw;
+          flex-direction: column;
+          align-items: center; } }
       @media only screen and (max-width: 580px) {
         body .display .budget {
           min-width: 85vw; } }
@@ -42,15 +45,20 @@ body {
         padding: 8px;
         margin-bottom: 10px;
         width: 250px;
-        background-color: #f6f8fa;
-        border-radius: 5px;
         color: #24292e;
-        box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
-        border: 2px solid #e7e7e7; }
+        margin-right: 40px; }
+        body .display .budget__title .deco {
+          color: #daba30;
+          font-size: 23px; }
+        @media only screen and (max-width: 1235px) {
+          body .display .budget__title {
+            margin-right: 0px; } }
         @media only screen and (max-width: 580px) {
           body .display .budget__title {
             min-width: 85vw;
-            font-size: 22px; } }
+            font-size: 22px;
+            margin-bottom: 25px;
+            margin-top: 20px; } }
       body .display .budget__value {
         font-weight: 300;
         font-size: 20px;
@@ -59,14 +67,21 @@ body {
         letter-spacing: 2px;
         padding: 5px;
         min-width: 250px;
+        height: 80px;
         margin-bottom: 10px;
-        background-color: #f6f8fa;
+        background-color: #ECECEC;
         border-radius: 5px;
         color: #24292e;
-        box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: -5px 6px 6px -1px rgba(0, 0, 0, 0.15);
         max-width: 80vw;
         overflow: auto;
-        border: 2px solid #e7e7e7; }
+        border: 1px solid #D4D4D4;
+        margin-right: 10px;
+        text-align: center;
+        line-height: 50px; }
+        @media only screen and (max-width: 1235px) {
+          body .display .budget__value {
+            margin-right: 0px; } }
         @media only screen and (max-width: 580px) {
           body .display .budget__value {
             font-size: 18px;
@@ -74,34 +89,43 @@ body {
       body .display .budget__income {
         padding: 5px;
         margin-bottom: 10px;
-        background-color: #f6f8fa;
+        background-color: #ECECEC;
         text-align: center;
         min-width: 250px;
         border-radius: 5px;
-        box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: -5px 6px 6px -1px rgba(0, 0, 0, 0.15);
         max-width: 80vw;
         overflow: auto;
         color: #1a9283;
-        border: 2px solid #e7e7e7; }
+        border: 1px solid #D4D4D4;
+        margin-right: 10px;
+        height: 80px; }
         body .display .budget__income--text {
           font-weight: 600; }
+        @media only screen and (max-width: 1235px) {
+          body .display .budget__income {
+            margin-right: 0px; } }
         @media only screen and (max-width: 580px) {
           body .display .budget__income {
             font-size: 16px;
             min-width: 85vw;
             margin-bottom: 10px; } }
       body .display .budget__expenses {
-        background-color: #f6f8fa;
+        background-color: #ECECEC;
         padding: 5px;
         text-align: center;
         border-radius: 5px;
         min-width: 250px;
-        box-shadow: -11px 6px 15px -1px rgba(0, 0, 0, 0.75);
-        border: 2px solid #e7e7e7;
+        box-shadow: -5px 6px 6px -1px rgba(0, 0, 0, 0.15);
+        border: 1px solid #D4D4D4;
         overflow: auto;
-        color: #424791; }
+        color: #424791;
+        height: 80px; }
         body .display .budget__expenses--text {
           font-weight: 600; }
+        @media only screen and (max-width: 1235px) {
+          body .display .budget__expenses {
+            margin-right: 0px; } }
         @media only screen and (max-width: 580px) {
           body .display .budget__expenses {
             font-size: 16px;
@@ -115,7 +139,7 @@ body {
     body .fields .add {
       padding: 14px;
       position: relative;
-      border: 2px solid #e7e7e7;
+      border: 2px solid #D4D4D4;
       box-shadow: -5px 6px 6px -1px rgba(0, 0, 0, 0.15);
       border-radius: 5px;
       display: flex;
@@ -167,6 +191,8 @@ body {
             margin-top: 1rem; } }
         body .fields .add__button:active {
           transform: translateY(2px); }
+        body .fields .add__button:hover {
+          color: #dfa40a; }
       body .fields .add__type:focus, body .fields .add__description:focus, body .fields .add__value:focus {
         outline: none;
         border: 1px solid #1a9283; }
@@ -212,7 +238,7 @@ body {
           color: #424791; }
       body .fields .container .item {
         padding: 12px;
-        border-bottom: 1px solid #24292e;
+        border-bottom: 1px solid #D4D4D4;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -224,8 +250,10 @@ body {
         @media only screen and (max-width: 580px) {
           body .fields .container .item {
             width: 85vw; } }
+        body .fields .container .item:hover {
+          box-shadow: -5px 6px 6px -1px rgba(0, 0, 0, 0.15); }
         body .fields .container .item:first-child {
-          border-top: 1px solid #24292e; }
+          border-top: 1px solid #D4D4D4; }
         body .fields .container .item__description {
           min-width: 5rem;
           max-width: 9rem;
@@ -240,16 +268,16 @@ body {
         body .fields .container .item__value {
           transition: transform 0.3s;
           height: auto;
+          width: 120px;
           overflow: auto; }
           @media only screen and (max-width: 950px) {
             body .fields .container .item__value {
-              width: 120px;
               font-size: 0.8rem; } }
         body .fields .container .item__percentage {
           margin-left: 20px;
           transition: transform 0.3s;
           font-size: 11px;
-          background-color: #FFDAD9;
+          background-color: #daba30;
           padding: 3px;
           border-radius: 3px;
           width: 32px;
@@ -266,6 +294,8 @@ body {
           vertical-align: middle;
           line-height: 1;
           display: none; }
+          body .fields .container .item__delete--btn:hover {
+            color: #dfa40a; }
           @media only screen and (max-width: 950px) {
             body .fields .container .item__delete--btn {
               display: block;
@@ -280,5 +310,17 @@ body {
           transform: translateX(-20px); }
         body .fields .container .item:hover .item__percentage {
           transform: translateX(-20px); }
+  body .footer {
+    font-size: 13px;
+    color: #24292e;
+    padding: 5px;
+    text-align: center;
+    margin-top: 14%; }
+    body .footer__link {
+      text-decoration: none; }
+      body .footer__link:focus, body .footer__link:active {
+        text-decoration: none; }
+      body .footer__link:visited {
+        color: #dfa40a; }
 
 /*# sourceMappingURL=style.css.map */

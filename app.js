@@ -229,7 +229,7 @@ const UIupdater = (function() {
 
     displayPercentages: function(percentages) {
       let fields = document.querySelectorAll(DOMselectors.percentageLabel);
-      
+
       nodeListForEach(fields, function(current, index) {
         if (percentages[index] > 0) {
           current.textContent = percentages[index] + "%";
@@ -263,14 +263,16 @@ const UIupdater = (function() {
 
     coloredType: function() {
       let fields = document.querySelectorAll(
-        DOMselectors.inputType + "," +
-        DOMselectors.inputDescription + "," +
-        DOMselectors.inputValue
-      )
+        DOMselectors.inputType +
+          "," +
+          DOMselectors.inputDescription +
+          "," +
+          DOMselectors.inputValue
+      );
 
       nodeListForEach(fields, function(current) {
-        current.classList.toggle('exp-focus');
-      }) 
+        current.classList.toggle("exp-focus");
+      });
     },
 
     //passing DOMselectors to other modules
@@ -289,9 +291,12 @@ const controller = (function(budgetCtrl, UIctrl) {
         addItem();
       }
     });
-    document.querySelector(DOM.container).addEventListener("click", ctrlDeleteItem);
-    document.querySelector(DOM.inputType).addEventListener('change', UIupdater.coloredType);
-    
+    document
+      .querySelector(DOM.container)
+      .addEventListener("click", ctrlDeleteItem);
+    document
+      .querySelector(DOM.inputType)
+      .addEventListener("change", UIupdater.coloredType);
   };
 
   const updateBudget = function() {

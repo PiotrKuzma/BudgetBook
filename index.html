@@ -1,81 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap&subset=latin-ext" rel="stylesheet" />
-        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
-        <link type="text/css" rel="stylesheet" href="style.css">
-        <title>Book+</title>
-    </head>
-    <body>
-        
-        <header class="display">
-            <div class="budget">
-                <div class="budget__title">
-                    Available Budget in <span class="budget__title--month"></span>
-                </div>
-                
-                <div class="budget__value">0</div>
-                
-                <div class="budget__income">
-                    <div class="budget__income--text">Income</div>
-                    
-                    <div class="budget__income--value">0</div>
-                    <div class="budget__income--percentage">&nbsp;</div>
-                    
-                </div>
-                
-                <div class="budget__expenses">
-                    <div class="budget__expenses--text">Expenses</div>
-                    
-                    <div class="budget__expenses--value">0</div>
-                    <div class="budget__expenses--percentage"></div>
-                    
-                </div>
-            </div>
-        </header>
-        
-        
-        
-        <section class="fields">
-           
-            <div class="add">
-                <select class="add__type">
-                    <option value="inc" selected>Inc +</option>
-                    <option value="exp">Exp -</option>
-                </select>
-                <input type="text" class="add__description" placeholder="Short description">
-                <input type="number" class="add__value" placeholder="Amount">
-                <button class="add__button"><i class="ion-ios-checkmark-outline"></i></button>
-            </div>
-           
-            
-            <div class="container">
-                <div class="income">
-                    <h2 class="income__title">Income</h2>
-                    
-                    <div class="income__list">
-                       <!-- Dynamic HTML starts here -->
-           
-                    </div>
-                </div>
-                
-                
-                
-                <div class="expenses">
-                    <h2 class="expenses__title">Expenses</h2>
-                    
-                    <div class="expenses__list">
-                       <!-- Dynamic HTML starts here -->
-             
-                    </div>
-                </div>
-            </div>
-            
-            
-        </section>
-        
-        <script src="app.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap&subset=latin-ext"
+      rel="stylesheet"
+    />
+    <link
+      href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <title>Budget+</title>
+  </head>
+  <body>
+    <header class="display">
+      <div class="budget">
+        <div class="budget__title">
+          <span class="deco">Available</span><br />
+          Budget<br />
+          in <span class="budget__title--month"></span>
+        </div>
+
+        <div class="budget__value">0</div>
+
+        <div class="budget__income">
+          <div class="budget__income--text">Income</div>
+
+          <div class="budget__income--value">0</div>
+          <div class="budget__income--percentage">&nbsp;</div>
+        </div>
+
+        <div class="budget__expenses">
+          <div class="budget__expenses--text">Expenses</div>
+
+          <div class="budget__expenses--value">0</div>
+          <div class="budget__expenses--percentage"></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="fields">
+      <div class="add">
+        <select class="add__type">
+          <option value="inc" selected>Inc +</option>
+          <option value="exp">Exp -</option>
+        </select>
+        <input
+          type="text"
+          class="add__description"
+          placeholder="Short description"
+        />
+        <input type="number" class="add__value" placeholder="Amount" />
+        <button class="add__button">
+          <i class="ion-ios-checkmark-outline"></i>
+        </button>
+      </div>
+
+      <div class="container">
+        <div class="income">
+          <h2 class="income__title">Income</h2>
+
+          <div class="income__list">
+            <!-- Dynamic HTML starts here -->
+          </div>
+        </div>
+
+        <div class="expenses">
+          <h2 class="expenses__title">Expenses</h2>
+
+          <div class="expenses__list">
+            <!-- Dynamic HTML starts here -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      &copy; 2020 Coded by
+      <a
+        class="footer__link"
+        href="https://piotr-kuzma.netlify.com/"
+        rel="noopener"
+        target="_blank"
+        >Piotr Kuźma</a
+      >
+    </footer>
+    <script src="app.js"></script>
+  </body>
 </html>
