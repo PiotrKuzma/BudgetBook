@@ -176,15 +176,21 @@ body {
           body .fields .add__description, body .fields .add__value {
             margin-right: none; } }
       body .fields .add__button {
-        font-size: 35px;
+        font-size: 30px;
         background: none;
         border: none;
         color: #daba30;
         cursor: pointer;
         display: inline-block;
         vertical-align: middle;
-        line-height: 1.1;
+        line-height: 30px;
         margin-left: 10px; }
+        body .fields .add__button .add__button__icon {
+          fill: #daba30;
+          width: 30px;
+          height: 30px; }
+          body .fields .add__button .add__button__icon:hover {
+            fill: #dfa40a; }
         @media only screen and (max-width: 950px) {
           body .fields .add__button {
             margin-left: 0px;
@@ -220,7 +226,7 @@ body {
         body .fields .container .income__title {
           color: #1a9283;
           margin-bottom: 20px; }
-        body .fields .container .income .item__value, body .fields .container .income .item__delete--btn {
+        body .fields .container .income .item__value {
           color: #1a9283; }
       body .fields .container .expenses {
         width: 50%;
@@ -234,7 +240,7 @@ body {
           @media only screen and (max-width: 1235px) {
             body .fields .container .expenses__title {
               margin-top: 20px; } }
-        body .fields .container .expenses .item__value, body .fields .container .expenses .item__percentage, body .fields .container .expenses .item__delete--btn {
+        body .fields .container .expenses .item__value, body .fields .container .expenses .item__percentage {
           color: #424791; }
       body .fields .container .item {
         padding: 12px;
@@ -292,10 +298,14 @@ body {
           cursor: pointer;
           display: inline-block;
           vertical-align: middle;
-          line-height: 1;
+          line-height: 28px;
           display: none; }
-          body .fields .container .item__delete--btn:hover {
-            color: #dfa40a; }
+          body .fields .container .item__delete--btn__icon {
+            width: 28px;
+            height: 28px;
+            fill: #daba30; }
+            body .fields .container .item__delete--btn__icon:hover {
+              fill: #dfa40a; }
           @media only screen and (max-width: 950px) {
             body .fields .container .item__delete--btn {
               display: block;

@@ -175,7 +175,11 @@ const UIupdater = (function() {
       
                       <div class="item__value">+ ${object.value}</div>
                       <div class="item__delete">
-                        <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                        <button class="item__delete--btn">
+                          <svg class="item__delete--btn__icon">
+                            <use xlink:href="icons.svg#icon-cancel-circle"></use>
+                          </svg>
+                        </button>
                       </div>
       
                     </div>`;
@@ -188,7 +192,11 @@ const UIupdater = (function() {
                         <div class="item__value">- ${object.value}</div>
                         <div class="item__percentage"></div>
                         <div class="item__delete">
-                            <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                          <button class="item__delete--btn">
+                            <svg class="item__delete--btn__icon">
+                              <use xlink:href="icons.svg#icon-cancel-circle"></use>
+                            </svg>
+                          </button>
                         </div>
                           
                       </div>`;
