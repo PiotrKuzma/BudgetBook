@@ -3,7 +3,7 @@ $garden: #1a9283;
 $rich: #424791;
 $gold: #daba30;
 $gold2: #dfa40a;
-$wall: #ECECEC;
+$wall: #ffffff;
 $underline: #D4D4D4;
 $void: #24292e;
 
@@ -22,7 +22,7 @@ body {
     font-family: Nunito;
     font-size: 16px;
     font-weight: 400;
-    background-color: $wall;
+    background-color: white;
 
     // JS inserted class
     .exp-focus:focus  {
